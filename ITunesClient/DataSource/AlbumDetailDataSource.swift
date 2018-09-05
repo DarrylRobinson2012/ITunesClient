@@ -9,7 +9,7 @@
 import UIKit
 
 class AlbumDetailDataSource: NSObject, UITableViewDataSource {
-    private let songs: [Song]
+    private var songs: [Song]
     init(song: [Song]) {
         self.songs = song
     }
@@ -40,4 +40,8 @@ func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -
             return nil
         }
     }
+
+func update(with songs: [Song]) {
+    self.songs = songs
+}
 }

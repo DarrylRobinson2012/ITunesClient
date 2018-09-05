@@ -16,11 +16,17 @@ class AlbumDetailController: UITableViewController {
     @IBOutlet weak var albumTitle: UILabel!
     @IBOutlet weak var releaseDate: UILabel!
     
-    
-    var album: Album?
-    lazy var dataSource: AlbumDetailDataSource = {
-        return AlbumDetailDataSource(song: album!.song)
-    }()
+    var dataSource = AlbumDetailDataSource(song: [])
+    var album: Album? {
+        didSet {
+            if let album = album{
+                configure(with: album)
+                dataSource.update(with: album.song)
+                tableView.reloadData()
+            }
+        }
+    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()

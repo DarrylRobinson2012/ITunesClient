@@ -36,6 +36,7 @@ class AlbumCell: UITableViewCell {
         albumTitle.text = viewModel.title
         genre.text = viewModel.genre
         releaseDate.text = viewModel.releaseDate
+        artwork.image = viewModel.artwork
     }
     
     

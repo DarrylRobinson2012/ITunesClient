@@ -35,7 +35,6 @@ class SearchResultsDataSource: NSObject,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell",for: indexPath)
         let artist = data[indexPath.row]
         cell.textLabel?.text = artist.name
-        print(data.count)
         return cell
     }
     

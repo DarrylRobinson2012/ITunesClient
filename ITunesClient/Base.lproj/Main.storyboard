@@ -133,8 +133,8 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="Utb-qR-7cf" id="QvG-5E-FRh"/>
-                            <outlet property="delegate" destination="Utb-qR-7cf" id="WKD-Ni-aPO"/>
+                            <outlet property="dataSource" destination="Utb-qR-7cf" id="oeH-8b-CIB"/>
+                            <outlet property="delegate" destination="Utb-qR-7cf" id="M2f-SW-siM"/>
                         </connections>
                     </tableView>
                 </tableViewController>

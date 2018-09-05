@@ -20,7 +20,7 @@ extension SongViewModel {
     
         //track time in milliseconds
         
-        let timeInSeconds = song.time/100
+        let timeInSeconds = song.trackTime/100
         let minutes = timeInSeconds/60 % 60
         let seconds = timeInSeconds % 60
         self.runTime = "\(minutes):\(seconds)"

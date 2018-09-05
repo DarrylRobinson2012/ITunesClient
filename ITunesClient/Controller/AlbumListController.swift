@@ -13,21 +13,26 @@ class AlbumListController: UITableViewController {
         static let AlbumCellHeight: CGFloat = 80
     }
     
-    var artist: Artist!
+    var artist: Artist? {
+        didSet {
+            self.title = artist?.name
+            dataSource.update(with: artist!.albums)
+            tableView.reloadData()
+        }
+    }
     
     
-    lazy var dataSource: AlbumList = {
-        return AlbumList(albums: self.artist.albums )
+    lazy var dataSource: AlbumList  = {
+        return AlbumList(albums: [], tableview: self.tableView)
     }()
     
-   
-    
+    var client = ItunesAPIClient()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = dataSource
-        self.title = artist.name
+       
         
         
 
@@ -44,10 +49,17 @@ class AlbumListController: UITableViewController {
         if segue.identifier == "showAlbum" {
             if let selectedIndexPath = tableView.indexPathForSelectedRow{
                 let selectedAlbum = dataSource.album(at: selectedIndexPath)
-                selectedAlbum.song = Stub.songs
+                
+                
                 
                 let albumDetailController = segue.destination as! AlbumDetailController
-                albumDetailController.album = selectedAlbum
+                
+                client.lookUpAlbum(withId: selectedAlbum.id) { album, error in
+                    albumDetailController.album = album
+                    
+                }
+                
+                
             }
         }
     }
